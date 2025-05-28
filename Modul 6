@@ -1,0 +1,140 @@
+#Dasar Instalasi dan Manajemen Sistem
+sudo apt update
+sudo apt install python3
+python3 --version
+sudo apt install python3-pip
+pip --version
+
+
+
+#Virtual Environment (Python)
+mkdir virtualenv
+cd virtualenv
+python3 -m venv env
+source env/bin/activate
+pip install numpy matplotlib
+nano grafik.py
+python grafik.py
+deactivate
+
+
+
+#Instalasi & Penggunaan Docker
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+sudo apt update
+sudo apt install docker-ce
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo systemctl status docker
+sudo usermod -aG docker ${USER}
+
+
+
+#Docker Project
+mkdir nama_direktori
+cd nama_direktori
+nano app.py               # Membuat file Python
+nano Dockerfile           # Membuat Dockerfile
+nano requirements.txt     # Menyusun dependencies
+docker build -t nama_image .
+
+
+#Jalankan Container dengan Akses GUI
+echo $DISPLAY             # Mengecek apakah X11 aktif
+docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix grafik
+
+
+
+BEBERAPA PENJELASANNYA JUGA 
+ChatGPT
+Anda bilang:
+Modul 6.1 revisi sistem operasi.docx
+Dokumen
+Catatkan bentuk perintah terminal pada dokumen ini dan berikan penjelasan singkat 
+ChatGPT bilang:
+Berikut adalah bentuk perintah terminal yang terdapat dalam dokumen tersebut, beserta penjelasan singkat untuk masing-masing perintah:
+
+📦 Instalasi Docker di Linux
+sudo apt update
+🔹 Memperbarui daftar paket dari repositori Ubuntu.
+
+sudo apt install docker.io -y
+🔹 Menginstal Docker versi komunitas dan menyetujui instalasi otomatis.
+
+sudo systemctl start docker
+🔹 Memulai layanan Docker.
+
+sudo systemctl enable docker
+🔹 Mengatur Docker agar berjalan otomatis saat booting.
+
+sudo usermod -aG docker nama_user
+🔹 Menambahkan user ke grup Docker agar bisa menjalankan Docker tanpa sudo.
+
+newgrp docker
+🔹 Membuat shell baru dengan grup Docker aktif, tanpa perlu logout-login.
+
+sudo systemctl status docker
+🔹 Melihat status layanan Docker.
+
+mkdir Docker
+🔹 Membuat direktori bernama “Docker”.
+
+cd Docker
+🔹 Masuk ke direktori “Docker”.
+
+xhost +local:docker
+🔹 Mengizinkan akses tampilan GUI (X11) bagi aplikasi Docker.
+
+xhost
+🔹 Melihat status akses X server.
+
+docker run -it \
+--name venv-py-gui \
+-e DISPLAY=$DISPLAY \
+-v /tmp/.X11-unix:/tmp/.X11-unix \
+python:3.12 bash
+🔹 Menjalankan container berbasis Python 3.12 dalam mode interaktif dengan dukungan GUI.
+
+apt update
+🔹 Memperbarui daftar paket dalam container Docker.
+
+apt install -y python3-tk
+🔹 Menginstal pustaka GUI tkinter dalam container Docker.
+
+pip install numpy matplotlib
+🔹 Menginstal pustaka Python numpy dan matplotlib.
+
+python
+🔹 Menjalankan interpreter Python (REPL).
+
+🐍 Instalasi Virtualenv di Linux
+mkdir virtualenv
+cd virtualenv
+🔹 Membuat dan masuk ke direktori proyek virtual environment.
+
+python3 -m venv env
+🔹 Membuat virtual environment Python dengan nama env.
+
+ls
+🔹 Melihat isi direktori untuk memastikan env telah dibuat.
+
+source env/bin/activate
+🔹 Mengaktifkan virtual environment.
+
+pip install numpy matplotlib
+🔹 Menginstal pustaka Python numpy dan matplotlib dalam virtual environment.
+
+xhost +local:virtualenv
+🔹 Mengizinkan akses GUI untuk virtualenv (jika diperlukan).
+
+xhost
+🔹 Menampilkan status akses X server.
+
+python
+🔹 Menjalankan interpreter Python di dalam virtual environment.
+
+deactivate
+🔹 Menonaktifkan virtual environment.
